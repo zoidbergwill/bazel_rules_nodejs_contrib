@@ -82,7 +82,7 @@ git_repository(
 
 git_repository(
   name = "bazel_gazelle",
-  remote = "https://github.com/zoidbergwill/bazel-gazelle",
+  remote = "https://github.com/bazelbuild/bazel-gazelle",
   branch = "master",
 )
 
