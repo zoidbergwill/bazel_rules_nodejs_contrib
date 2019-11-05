@@ -26,7 +26,6 @@ workspace(
     },
 )
 
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
 git_repository(
@@ -69,11 +68,10 @@ yarn_install(
     yarn_lock = "@ecosia_bazel_rules_nodejs_contrib//examples/babel_library:yarn.lock",
 )
 
-http_archive(
+git_repository(
     name = "pax",
-    sha256 = "cf185793dafe4710be266d4aab488114388b0f8bcf74e19df72db6dbb03f0471",
-    strip_prefix = "pax-001d323ee1374a72ee71ebbaa72f9b032da9ebaf",
-    urls = ["https://github.com/Globegitter/pax/archive/001d323ee1374a72ee71ebbaa72f9b032da9ebaf.tar.gz"],
+    remote = "https://github.com/Globegitter/pax",
+    branch = "master",
 )
 
 git_repository(
