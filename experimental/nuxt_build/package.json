@@ -1,16 +1,16 @@
 {
     "name": "nuxt_build",
     "dependencies": {
-        "nuxt": "^1.4.2",
-        "vue": "^2.5.16",
-        "vue-meta": "^1.5.2",
-        "vue-router": "^3.0.1",
-        "vue-style-loader": "^4.1.1",
-        "sass-loader": "^7.1.0",
-        "node-sass": "^4.9.3",
-        "babel-loader": "^7.1.5"
+        "babel-loader": "^8.0.6",
+        "node-sass": "^4.13.0",
+        "nuxt": "^2.10.2",
+        "sass-loader": "^8.0.0",
+        "vue": "^2.6.10",
+        "vue-meta": "^2.3.1",
+        "vue-router": "^3.1.3",
+        "vue-style-loader": "^4.1.2"
     },
     "devDependencies": {
-        "@bazel/hide-bazel-files": "0.32.2"
+        "@bazel/hide-bazel-files": "0.39.1"
     }
 }
