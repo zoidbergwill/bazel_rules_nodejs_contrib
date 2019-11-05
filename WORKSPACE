@@ -27,19 +27,18 @@ workspace(
 )
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
-http_archive(
+git_repository(
     name = "bazel_skylib",
-    sha256 = "2ea8a5ed2b448baf4a6855d3ce049c4c452a6470b1efd1504fdb7c1c134d220a",
-    strip_prefix = "bazel-skylib-0.8.0",
-    urls = ["https://github.com/bazelbuild/bazel-skylib/archive/0.8.0.tar.gz"],
+    remote = "https://github.com/bazelbuild/bazel-skylib",
+    branch = "master",
 )
 
-http_archive(
+git_repository(
     name = "build_bazel_rules_nodejs",
-    sha256 = "0c78dd9ca95d0eedb790e11550c3ee6412b585f6d4eae2c2250d2d7511d43cd9",
-    strip_prefix = "rules_nodejs-0.32.2",
-    urls = ["https://github.com/bazelbuild/rules_nodejs/archive/0.32.2.tar.gz"],
+    remote = "https://github.com/bazelbuild/rules_nodejs",
+    branch = "master",
 )
 
 load("@build_bazel_rules_nodejs//:defs.bzl", "node_repositories", "yarn_install")
@@ -77,16 +76,16 @@ http_archive(
     urls = ["https://github.com/Globegitter/pax/archive/001d323ee1374a72ee71ebbaa72f9b032da9ebaf.tar.gz"],
 )
 
-http_archive(
-    name = "io_bazel_rules_go",
-    sha256 = "f04d2373bcaf8aa09bccb08a98a57e721306c8f6043a2a0ee610fd6853dcde3d",
-    urls = ["https://github.com/bazelbuild/rules_go/releases/download/0.18.6/rules_go-0.18.6.tar.gz"],
+git_repository(
+  name = "io_bazel_rules_go",
+  remote = "https://github.com/bazelbuild/rules_go",
+  branch = "master",
 )
 
-http_archive(
-    name = "bazel_gazelle",
-    sha256 = "3c681998538231a2d24d0c07ed5a7658cb72bfb5fd4bf9911157c0e9ac6a2687",
-    urls = ["https://github.com/bazelbuild/bazel-gazelle/releases/download/0.17.0/bazel-gazelle-0.17.0.tar.gz"],
+git_repository(
+  name = "bazel_gazelle",
+  remote = "https://github.com/bazelbuild/bazel-gazelle",
+  branch = "master",
 )
 
 load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
