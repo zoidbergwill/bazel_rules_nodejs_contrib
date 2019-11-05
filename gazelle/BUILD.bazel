@@ -1,5 +1,5 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
-load("@bazel_gazelle//:def.bzl", "gazelle_binary")
+load("@bazel_gazelle//:deps.bzl", "gazelle_binary")
 
 go_library(
     name = "go_default_library",
