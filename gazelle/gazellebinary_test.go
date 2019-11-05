@@ -80,7 +80,7 @@ export default "Magic";
 	tsBaseFiles = []testtools.FileSpec{
 		{Path: "WORKSPACE"},
 		{Path: "hello_world/BUILD.bazel", Content: `
-load("@npm_bazel_typscript//:index.bzl", "ts_library")
+load("@npm_bazel_typescript//:index.bzl", "ts_library")
 
 ts_library(
     name = "old",
@@ -252,7 +252,7 @@ func TestGazelleBinaryTypescript(t *testing.T) {
 
 	testtools.CheckFiles(t, dir, []testtools.FileSpec{{
 		Path: "hello_world/BUILD.bazel",
-		Content: `load("@npm_bazel_typscript//:index.bzl", "ts_library")
+		Content: `load("@npm_bazel_typescript//:index.bzl", "ts_library")
 
 ts_library(
     name = "index",
@@ -269,7 +269,7 @@ ts_library(
 `,
 	}, {
 		Path: "shared/BUILD.bazel",
-		Content: `load("@npm_bazel_typscript//:index.bzl", "ts_library")
+		Content: `load("@npm_bazel_typescript//:index.bzl", "ts_library")
 
 ts_library(
     name = "colors.spec",

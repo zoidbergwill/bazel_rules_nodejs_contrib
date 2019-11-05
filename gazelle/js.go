@@ -99,7 +99,7 @@ func (s *jslang) Loads() []rule.LoadInfo {
 			Symbols: []string{"js_library", "jest_node_test", "js_import", "babel_library"},
 		},
 		{
-			Name:    "@npm_bazel_typscript//:index.bzl",
+			Name:    "@npm_bazel_typescript//:index.bzl",
 			Symbols: []string{"ts_library"},
 		},
 	}
