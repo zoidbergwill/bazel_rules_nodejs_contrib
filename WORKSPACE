@@ -82,7 +82,7 @@ git_repository(
 
 git_repository(
   name = "bazel_gazelle",
-  remote = "https://github.com/bazelbuild/bazel-gazelle",
+  remote = "https://github.com/zoidbergwill/bazel-gazelle",
   branch = "master",
 )
 
@@ -95,6 +95,10 @@ go_register_toolchains()
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
 
 gazelle_dependencies()
+
+load("@io_bazel_rules_go//tests:bazel_tests.bzl", "test_environment")
+
+test_environment()
 
 load("//examples/jest_node_test:deps.bzl", "jest_node_test_example_dependencies")
 
