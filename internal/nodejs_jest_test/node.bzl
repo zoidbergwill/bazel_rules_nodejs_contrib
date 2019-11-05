@@ -21,9 +21,8 @@ a `module_name` attribute can be `require`d by that name.
 """
 
 load("@build_bazel_rules_nodejs//internal/common:module_mappings.bzl", "module_mappings_runtime_aspect")
-load("@build_bazel_rules_nodejs//internal/common:sources_aspect.bzl", "sources_aspect")
 load("@build_bazel_rules_nodejs//internal/common:expand_into_runfiles.bzl", "expand_location_into_runfiles")
-load("@build_bazel_rules_nodejs//internal/common:node_module_info.bzl", "NodeModuleInfo", "collect_node_modules_aspect")
+load("@build_bazel_rules_nodejs//internal/common:npm_package_info.bzl", "NpmPackageInfo", "node_modules_aspect")
 
 def _trim_package_node_modules(package_name):
     # trim a package name down to its path prior to a node_modules
@@ -58,8 +57,8 @@ def _write_loader_script(ctx, entry_point):
             "node_modules",
         ] if f])
     for d in ctx.attr.data:
-        if NodeModuleInfo in d:
-            possible_root = "/".join([d[NodeModuleInfo].workspace, "node_modules"])
+        if NpmPackageInfo in d:
+            possible_root = "/".join([d[NpmPackageInfo].workspace, "node_modules"])
             if not node_modules_root:
                 node_modules_root = possible_root
             elif node_modules_root != possible_root:
@@ -190,7 +189,7 @@ NODEJS_EXECUTABLE_ATTRS = {
     "data": attr.label_list(
         doc = """Runtime dependencies which may be loaded during execution.""",
         allow_files = True,
-        aspects = [sources_aspect, module_mappings_runtime_aspect, collect_node_modules_aspect],
+        aspects = [module_mappings_runtime_aspect, node_modules_aspect],
     ),
     "templated_args": attr.string_list(
         doc = """Arguments which are passed to every execution of the program.

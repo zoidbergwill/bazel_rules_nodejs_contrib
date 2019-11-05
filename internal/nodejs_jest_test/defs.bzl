@@ -3,15 +3,15 @@ load(
     "test_sources_aspect",
 )
 load("@build_bazel_rules_nodejs//internal/common:module_mappings.bzl", "module_mappings_runtime_aspect")
-load("@build_bazel_rules_nodejs//internal/common:sources_aspect.bzl", "sources_aspect")
+# load("@build_bazel_rules_nodejs//:providers.bzl", "JSEcmaScriptModuleInfo", "JSNamedModuleInfo")
 load("@build_bazel_rules_nodejs//internal/common:expand_into_runfiles.bzl", "expand_location_into_runfiles")
-load("@build_bazel_rules_nodejs//internal/common:node_module_info.bzl", "NodeModuleInfo", "collect_node_modules_aspect")
+load("@build_bazel_rules_nodejs//internal/common:npm_package_info.bzl", "NpmPackageInfo", "node_modules_aspect")
 load(
     "@ecosia_bazel_rules_nodejs_contrib//internal/nodejs_jest_test:node.bzl",
     "NODEJS_EXECUTABLE_ATTRS",
     "NODEJS_EXECUTABLE_OUTPUTS",
     "nodejs_binary_impl",
-    "short_path_to_manifest_path",
+    "short_path_to_manifest_path"
 )
 
 def _node_jest_test_impl(ctx):
@@ -54,7 +54,7 @@ node_jest_test = rule(
         ),
         "data": attr.label_list(
             allow_files = True,
-            aspects = [sources_aspect, module_mappings_runtime_aspect, collect_node_modules_aspect],
+            aspects = [module_mappings_runtime_aspect, node_modules_aspect],
         ),  # test_sources_aspect
         "env": attr.string(
             default = "jsdom",
@@ -94,7 +94,7 @@ node_jest = rule(
         ),
         "data": attr.label_list(
             allow_files = True,
-            aspects = [sources_aspect, module_mappings_runtime_aspect, collect_node_modules_aspect],
+            aspects = [module_mappings_runtime_aspect, node_modules_aspect],
         ),  # test_sources_aspect
         "env": attr.string(
             default = "jsdom",

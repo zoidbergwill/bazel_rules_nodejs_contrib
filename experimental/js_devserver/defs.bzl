@@ -65,7 +65,6 @@ js_devserver = rule(
         "deps": attr.label_list(
             doc = "Targets that produce JavaScript, such as `ts_library`",
             allow_files = True,
-            # aspects = [sources_aspect],
         ),
         "serving_path": attr.string(
             doc = """The path you can request from the client HTML which serves the JavaScript bundle.
