@@ -108,7 +108,7 @@ func buildJsRegexp() *regexp.Regexp {
 	// charValue := strings.Join([]string{hexEscape, octEscape, charEscape, "[^\x00\\'\\\"\\\\]"}, "|")
 	// strLit := `'(?:` + charValue + `|")*'|"(?:` + charValue + `|')*"`
 	// importStmt := `\bimport\s*(?P<import>` + strLit + `)\s*;`
-	charValue := ".+"
+	charValue := "[@\\w/_-]+"
 	strLit := `'(?:` + charValue + `|")*'|"(?:` + charValue + `|')*"`
 	importStmt := `(?m)^import\s(?:(?:.|\n)+?from )??(?P<import>` + strLit + `).*?`
 
